@@ -1,0 +1,96 @@
+# (1)
+if 4 in [1,2,3,4]: print("4 가 있습니다.") # 4가 있습니다.
+
+# (2) simple.py
+languages = ['python', 'perl', 'c', 'java']
+
+for lang in languages:
+  if lang in ['python', 'perl']
+    print("%6s need interpreter" % lang)
+  elif lang in ['c', 'java']
+    print("%6s need compiler" % lang)
+  else;
+    print("should not reach here")
+    
+# python need interpreter
+    perl need interpreter
+       c need interpreter
+    java need interpreter * %6s = 6개의 단어까지 출력, s = string
+    
+    
+# (3) 사칙연산
+더하기 : +
+빼기 : -
+나누기 : /
+곱하기 : *
+몫 : //
+나머지 : %
+제곱근 : **
+
+
+# (4) 조건문 if
+a = 3
+if a > 1:
+    print("a is greater than 1")
+    
+# a is greater than 1 * a가 3 인경우 a는 1보다 클경우 출력한다는 조건
+* if-else, if-elif-else의 형태를 가지고있슴
+
+# (4) 반복문 for
+for a in [1,2,3]:
+    print(a)
+
+#1
+2
+3 * a가 가지고 잇는 [1,2,3]에 대하여 출력
+
+
+# (5) 반복문 while
+i = 0
+while i < 3:
+  i = i+1
+  print(i)
+  
+#1
+2
+3 * i가 0의 값을 갖고 있고 i는 i에 1씩 더하기를 한다 단, 3보다 작을경우 그만 반복한다.
+* while-if break의 형태를 가지고있슴
+
+
+# (6) 함수
+def add(a,b)
+  return a+b
+  
+# add(3,4) 일 경우 합인 7일 출력
+
+
+# (7) turtle을 활용한 while 반복문
+from turtle import *  # turtle이라는 라이브러리 불러오기
+color('green', 'cyan')  #화살표의 선의색, 채우기색을 설정
+begin_fill()
+while True:
+  print(abs(pos())
+  forward(300)  # '300'만큼의 이동거리 확립
+  left(160) # 160도 만큼의 회전
+  if abs(pos()) < 1:  # pos() = position()의 위치가 1보다 작아질경우 
+    break
+end_fill()
+
+
+# (8) 논리 연산
+a>b a가 b보다 크다
+a<b a가 b보다 작다
+a>=b a가 b보다 크거나 같다
+a<=b a가 b보다 작거나 같다
+a==b a와b는 같다
+a!=b a와b는 다르다
+and : 두개의 조건이 충족할 경우 True
+or : 둘중 하나의 조건만 충족해도 True
+not : 조건과 반대의 결과를 출력
+
+
+# (9) 리스트
+eggs=['egg0','egg1','egg2','egg3']
+print(eggs)
+
+#['egg0','egg1','egg2','egg3']
