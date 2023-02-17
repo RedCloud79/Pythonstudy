@@ -40,16 +40,61 @@ ex) a = "20010331Rainy", date = a[:8], weather = a[8:] # date = '20010331', weat
 
 포매팅(Formatting) = 문자열 안에 숫자나 문자를 끼워 넣고 싶은경우
 * 문자열 포맷 코드
-%d(정수) : ex) " I have %d apples" %3
-%s(문자열) : ex) "I eat %s apples." %"five"
-%c(문자 1개) :
-%f(부동 소수) :
-%x (16진수) :
-%o (8진수) :
-%% (Literal 문자'%' 자체) :
+%d(정수)Integer : 10진수로 이루어진 수 ex) " I have %d apples" %3
+%s(문자열) String: string의 의미를 가지고 있슴 ex) "I eat %s apples." %"five"
+%c(문자 1개) Character: 'a' 와같은 1개의 문자만을 받음 1개가 넘으면 오류 ex) "I ate %c apples" %'q' = "I ate q apples"
+%f(부동 소수) Floating-point: 소숫점 자리수를 표현 할 때 사용
+%x (16진수) : 16진수 '0xAff' 등의 표기
+%o (8진수) : 8 진수 '0o32' 등의 표기
+%% (Literal 문자'%' 자체) : "%"를 출력하고 싶을 때 사용
 * 2개 이상의 값 = number = 10 \n day = "three" \n "I ate %d apples. so I was sick for %s days." %(number, day)
 print = 'I ate 10 apples. so I was sick for three days.'
+
+
+# (3) f문자열 포매팅
 * .format() = ex) ' I eat {} apple {} orange'.format(n,n)
-* f'I eat {n} apple {n} orange' = f포멧
+* f'I eat {n} apple {n} orange' = f포멧 3.6버전부터는 기능을 사용하다
+@ 포맷 코드와 숫자 함께 사용하기
+1. 정렬과 공백 - "%10s" % "hi" = '        hi' * hi가 오른쪽 정렬됨 '10'은 문자열의 전체 길이를 표기
+                "%-10sjane" % "hi" = 'hi        jane' * hi만 왼쪽 정렬됨
+2. 소수점 표현하기 - "%10.4f" % 3.4213234 = '   3.4213' * (자릿수 제한).(숫자)f 의 숫자는 소숫점 몇자리 까지인지 표기
+                    "{:.2f}".format(3.42134234) * .format()에서 사용하는 방법
+                    f"{3.42134234:.2f}" * f포맷에서 사용하는 방법
+3. 정렬하기 - "{0:<10}".format("hi") = 'hi        ' * 왼쪽정렬
+             "{0:>10}".format("hi") = '        hi' * 오른쪽정렬
+             "{0:^10}".format("hi") = '    hi    ' * 가운데정렬
+4. 공백 채우기 - "{0:=^10}.format("hi") = '====hi====' * 빈 공간을 '='로 채워줌
+
+
+# (4) 문자열 관련 함수
+* count() - 문자 계수 세는 함수 
+            a= 'habby' \n a.count('b') 결과값: 2
+* find() - 찾는 문자열이 처음 나온 위치 반환, 없으면 -1반환
+           a = "Python is the best choise" \n a.find('b') 결과값: 14*문자열에서 b가 처음 나온 위치
+           a.find('k') 결과값: -1
+* index() - find와 마찬가지로, 찾는 문자열이 처음 나온 위치 반환, 단 찾는 문자열이 없으면 오류 발생
+            a = "Life is too short" \n a.index('t') 결과값 : 8
+            a.index('k') 결과값 : valueError
+** join() - 문자열 삽입 (어떠한 문자의 형태라도 문제 없슴)
+            ",".join('abcd') 결과값: 'a,b,c,d'
+* upper() - 소문자를 대문자로 바꾸기
+* lower() - 대문자를 소문자로 바꾸기
+* lstrip() - 왼쪽 공백 지우기
+* rstrip() - 오른쪽 공백 지우기
+* strip() - 양쪽 공백 지우기
+* replace() - 문자열 바꾸기
+              
+** split() = 문자열 나누기
+
+
+
+
+
+
+
+
+
+
+
 
 
