@@ -1,10 +1,10 @@
 # 피젯 스피너 .by Python
 
-from turtle import*
+from turtle import* # turtle 라이브러리 호출
 
 state = 0 # state 함수 정의
 def spinner(): # draw spinner
-    clear()
+    clear() # 초기화
     angle=state/10 # angle은 state/10 인값
     right(angle) # 'angle'만큼 오른쪽으로 돌기
     
@@ -25,21 +25,21 @@ def spinner(): # draw spinner
     update()
     
 def animate(): # 애니메이션 구동 (20미리초마다 스피너를 그리고 지우고를 반복)
-    global state
+    global state    # 전역변수
     if state>0: # state 0보다 클경우
         state -= 1 # state를 -1씩 증가
-    spinner() # spinner 'def' 을 호출
+    spinner() # spinner 'def spinner()' 을 호출
     ontimer(animate,20) # animate를 20미리초 마다 수행
     
 def flick(): 
     global state
     state += 10 # state를 10을 증가
     
-setup(420, 420, 370, 0)
-hideturtle()
-tracer(False)
-width(20)
+setup(420, 420, 370, 0) # (width, height, startx축, starty축) (창화면, 시작지점 x,y축)
+hideturtle() # 화살표 숨기기
+tracer(False) # 애니메이션 제어 애니메이션을 켜거나 끄고 그림 갱신 지연을 설정
+width(20) # 그려지는 선의 폭
 onkey(flick, 'space') # 'space' 키를 누르면 flick()을 수행
-listen()
-animate()
+listen() # 키 이벤트를 수집하기 위해 설정, onkey를 backup
+animate()   # def animate() 를 구동
 
