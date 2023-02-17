@@ -2,16 +2,16 @@
 
 from turtle import*
 
-state = 0
+state = 0 # state 함수 정의
 def spinner(): # draw spinner
     clear()
-    angle=state/10
-    right(angle)
+    angle=state/10 # angle은 state/10 인값
+    right(angle) # 'angle'만큼 오른쪽으로 돌기
     
-    forward(100)
-    dot(120, 'red')
-    back(100)
-    right(120)
+    forward(100) # 100만큼 이동
+    dot(120, 'red') # 점찍기 (지름, 색상)
+    back(100) # 100만큼 뒤로 이동
+    right(120) # 오른쪽으로 120도만큼 돌기
     
     forward(100)
     dot(120, 'green')
@@ -24,22 +24,22 @@ def spinner(): # draw spinner
     right(120)
     update()
     
-def animate():
+def animate(): # 애니메이션 구동 (20미리초마다 스피너를 그리고 지우고를 반복)
     global state
-    if state>0:
-        state -= 1
-    spinner()
-    ontimer(animate,20)
+    if state>0: # state 0보다 클경우
+        state -= 1 # state를 -1씩 증가
+    spinner() # spinner 'def' 을 호출
+    ontimer(animate,20) # animate를 20미리초 마다 수행
     
-def flick():
+def flick(): 
     global state
-    state += 10
+    state += 10 # state를 10을 증가
     
 setup(420, 420, 370, 0)
 hideturtle()
 tracer(False)
 width(20)
-onkey(flick, 'space')
+onkey(flick, 'space') # 'space' 키를 누르면 flick()을 수행
 listen()
 animate()
 
