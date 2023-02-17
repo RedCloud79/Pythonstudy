@@ -6,7 +6,8 @@
 8진수: 0o32, 0o25
 16진수(2[1과0으로 이루어진수]진수에서 옴): 0x2A, 0xFF * 0x (1~9,A~F)
 
-@ 문자열
+
+@ 문자열      ** ㅇ은 변수값
 = 문자, 단어등으로 구성된 문자들의 집합
 문자열 사용법
 * 인용 부호
@@ -18,6 +19,15 @@
 큰따옴표(")를 출력:'ㅇㅇ"ㅇ'
 백슬래시 활용하기: 'ㅇㅇ\'ㅇㅇㅇ', "ㅇㅇ\"ㅇㅇㅇ"
 
+* 타입과 클래스 확인하는 방법 : type(), oo.__class__
+
+* isinstance : 자료형이 맞는지 확인할 수 있다.
+    isinstance(3, int) 결과값: True
+    isinstance(3.14, float) 결과값: True
+    isinstance('3.14', str) 결과값: True
+    isinstance(True, bool) 결과값: True
+    isinstance([], list) 결과값: True
+
 * 여러 줄인 문자열을 변수에 대입하고 싶을 때
 이스케이프 코드 '\n' 삽입
 작은따옴표 3개: '''
@@ -26,28 +36,30 @@
 *문자열 연산하기
 문자열 더해서 연결하기: +
 문자열 곱하기: *
-문자열 길이 구하기: len()
+@문자열 길이 구하기: len()
 
 
 # (2) 문자열 인덱싱
-인덱싱(index) = '가리킨다'는 의미, 파이썬은 0부터 셈, 문자열안의 특정 값을 뽑아냄
-'-'의 경우 뒤에서부터 셈
+인덱싱(indexing) = '가리킨다'는 의미, 파이썬은 0부터 셈, 문자열안의 특정 값을 뽑아냄
+'-'의 경우 뒤에서부터 셈, 범위를 넘어설경우 indexError
 ex) 'hello'[3] = 'l'
 
 슬라이싱(Slicing): 'hello'[1:3] = 'el' * 1이상 3미만을 가리킴, 끝번호는 해당하지 않는다.
 [:3], [3:] - 맨앞과 맨뒤를 다 표기, [:] - 모든범위를 표기
 *[-5:-3]과 같이 반대의 경우도 사용가능, [-3:-5]의 경우 없기에 ''(빈 문자열)출력, [-3:-5:-1]의 경우 -1이 반대로 셈을 말함
 ex) a = "20010331Rainy", date = a[:8], weather = a[8:] # date = '20010331', weather = 'Rainy'
+    >>> '0123456789'[1:9:3] 결과값 : '147' * 시작지점 '1'에서 부터 3칸 간격인 값이 출력
+    >>> 'hello'[::2] 결과값 : 'hlo'  처음부터 끝까지 2칸 간격으로 출력
 
 포매팅(Formatting) = 문자열 안에 숫자나 문자를 끼워 넣고 싶은경우
 * 문자열 포맷 코드
-%d(정수)Integer : 10진수로 이루어진 수 ex) " I have %d apples" %3
-%s(문자열) String: string의 의미를 가지고 있슴 ex) "I eat %s apples." %"five"
+@%d(정수)Integer : 10진수로 이루어진 수 ex) " I have %d apples" %3
+@%s(문자열) String: string의 의미를 가지고 있슴 ex) "I eat %s apples." %"five"
 %c(문자 1개) Character: 'a' 와같은 1개의 문자만을 받음 1개가 넘으면 오류 ex) "I ate %c apples" %'q' = "I ate q apples"
-%f(부동 소수) Floating-point: 소숫점 자리수를 표현 할 때 사용
-%x (16진수) : 16진수 '0xAff' 등의 표기
-%o (8진수) : 8 진수 '0o32' 등의 표기
-%% (Literal 문자'%' 자체) : "%"를 출력하고 싶을 때 사용
+@%f(부동 소수) Floating-point: 소숫점 자리수를 표현 할 때 사용
+%x(16진수) : 16진수 '0xAff' 등의 표기
+%o(8진수) : 8 진수 '0o32' 등의 표기
+%%(Literal 문자'%' 자체) : "%"를 출력하고 싶을 때 사용
 * 2개 이상의 값 = number = 10 \n day = "three" \n "I ate %d apples. so I was sick for %s days." %(number, day)
 print = 'I ate 10 apples. so I was sick for three days.'
 
@@ -64,20 +76,20 @@ print = 'I ate 10 apples. so I was sick for three days.'
 3. 정렬하기 - "{0:<10}".format("hi") = 'hi        ' * 왼쪽정렬
              "{0:>10}".format("hi") = '        hi' * 오른쪽정렬
              "{0:^10}".format("hi") = '    hi    ' * 가운데정렬
-4. 공백 채우기 - "{0:=^10}.format("hi") = '====hi====' * 빈 공간을 '='로 채워줌
+4. 공백 채우기 - "{0:=^10}".format("hi") = '====hi====' * 빈 공간을 '='로 채워줌
 
 
 # (4) 문자열 관련 함수
 * count() - 문자 계수 세는 함수 
-            a= 'habby' \n a.count('b') 결과값: 2
+            a= 'habby' \n a.count('b') * 결과값: 2
 * find() - 찾는 문자열이 처음 나온 위치 반환, 없으면 -1반환
            a = "Python is the best choise" \n a.find('b') 결과값: 14*문자열에서 b가 처음 나온 위치
-           a.find('k') 결과값: -1
+           a.find('k') * 결과값: -1
 * index() - find와 마찬가지로, 찾는 문자열이 처음 나온 위치 반환, 단 찾는 문자열이 없으면 오류 발생
-            a = "Life is too short" \n a.index('t') 결과값 : 8
-            a.index('k') 결과값 : valueError
+            a = "Life is too short" \n a.index('t') * 결과값 : 8
+            a.index('k') * 결과값 : valueError
 ** join() - 문자열 삽입 (어떠한 문자의 형태라도 문제 없슴)
-            ",".join('abcd') 결과값: 'a,b,c,d'
+            ",".join('abcd') * 결과값: 'a,b,c,d'
 * upper() - 소문자를 대문자로 바꾸기
 * lower() - 대문자를 소문자로 바꾸기
 * lstrip() - 왼쪽 공백 지우기
@@ -85,16 +97,17 @@ print = 'I ate 10 apples. so I was sick for three days.'
 * strip() - 양쪽 공백 지우기
 * replace() - 문자열 바꾸기
               a = "Life is too short"
-              a.replace("Life", "Your leg") 결과값: 'Your leg is too short'
+              a.replace("Life", "Your leg") * 결과값: 'Your leg is too short'
 ** split() = 문자열 나누기
              a = "Life is too short"
-             a.split() 결과값 : ['Life', 'is', 'too', 'short']
-             ':'.join(a) 결과값 : 'L:i:f:e: :i:s: :t:o:o: :s:h:o:r:t'
-             ':'.join(['Brad','21','male']) 결과값 : 'Brad:21:male'
+             a.split() * 결과값 : ['Life', 'is', 'too', 'short']
+             ':'.join(a) * 결과값 : 'L:i:f:e: :i:s: :t:o:o: :s:h:o:r:t'
+             ':'.join(['Brad','21','male']) * 결과값 : 'Brad:21:male'
              b = "a:b:c:d"
-             b.split(':') 결과값 : ['a','b','c',d']
+             b.split(':') * 결과값 : ['a','b','c',d']
 
-# join()과 split()의 조합예제
+
+# (5) join()과 split()의 조합예제
 >>> 'Life is too short'.split()
     ['Life', 'is', 'too', 'short']
 >>> ':'.join(['Life', 'is', 'too', 'short'])
@@ -103,4 +116,19 @@ print = 'I ate 10 apples. so I was sick for three days.'
     ['Life', 'is', 'too', 'short']
 
 
+# (6) id 변수, 객체, 값 이해하기
+>>> a = 3
+>>> b = 4
+>>> type(3)
+<class 'int'>
+>>> type(4)
+<class 'int'>
+>>> id(3)   # id라는 고유 이름 값
+2475739119920
+>>> id(a)
+2475739119920
+>>> id(4)
+2475739119952
+>>> id(b)
+2475739119952
 
