@@ -1,4 +1,4 @@
-Height = float(input('Enter your height in centimeters: '))
+Height = float(input('Enter your height in centimeters: ')) # 실수형태의 입력값을 받음
 Weight = float(input('Enter your weight in centimeters: '))
 Height = Height / 100
 BMI = Weight/(Height*Height)
