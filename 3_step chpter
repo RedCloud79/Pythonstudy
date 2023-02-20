@@ -7,3 +7,130 @@ elif condition:
 else:
   @ TODO: write code....
 
+# (2) if in 문
+fridge = ['apple', 'mandarine', 'banana', 'pine apple']
+if 'apple' in fridge:
+    'eat apple'
+* 리스트에서 꺼내는 경우 .pop(), 넣는 경우 .append()
+
+
+# while 문
+while conditon:
+  @ TODO: wrie code....
+  
+# for 문
+for item in items:
+    @ TODO: wrie code....
+unpacking operator = 풀기 연산자 @ [*range(1,6)] 결과값 : [1,2,3,4,5]
+packing operator = 묶음 연산자 '*' = 곱하기, 거듭제곰, 풀기, 묶기 등에 사용
+    
+1. range 함수
+  for i in range(10) 결과값 : 0,1,2,3,4,5,6,7,8,9
+  for i in range(0,10,2) 결과값 : 0,2,4,6,8
+  for i in range(10,0,-3) 결과값 : 10,7,4,1
+  
+2. list 형식으로 표출하는 방법
+   list(range(1,6)) 결과값 : [1, 2, 3, 4, 5]
+   [*range(1,6)] 결과값 : [1, 2, 3, 4, 5]
+
+3. 정수 리스트 생성하기
+int_list = []
+for i in range(10):
+    int_list.append(i) 결과값 : [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+    
+4. 리스트 내포 : 리스트 생성하기 편리
+ex1) 
+[i for i in range(10)] 결과값 : [0,1,2,3,4,5,6,7,8,9]
+int_list2 = [i for i in range(10)] 결과값 : [0,1,2,3,4,5,6,7,8,9]
+
+ex2) 
+for i in range(5):
+    i**2  결과값 : 0,1,4,9,16
+[i**2 for i in range(5)]
+결과값 : [0, 1, 4, 9, 16]
+
+ex3)
+(i**2+i for i in range(5))
+결과값 : <generator object <genexpr> at 0x00000270ACD1A570>
+[*(i**2+i for i in range(5))]
+결과값 : [0, 2, 6, 12, 20]
+list(i**2+i for i in range(5))
+결과값 : [0, 2, 6, 12, 20]
+
+# 임의 숫자 생성 : random.random(), random.randint(a,b)
+ex1)
+import random
+random.random()
+random.randint(0,100)
+
+float_list = []
+for _ in range(10):
+    float_list.append(random.random())
+    
+print(float_list) 결과값 : [0.2817467894558965, 0.5149822420551764, ...]
+    
+
+int_list_2 = []
+for _ in range(10):
+    int_list_2.append(random.randint(0,100))
+    
+print(int_list_2) 결과값 : [74, 45, 43, 0, 17, 35, 64, 24, 43, 63]
+
+ex2)
+[random.random() for _ in range(10)] 결과값 : [0.35001574082673703, 0.06293913028242082, ...]
+[random.randint(0,100) for _ in range(10)] 결과값 : [61, 37, 16, 74, 91, 33, 77, 22, 99, 76]
+
+
+# 임의 문자열 생성 : random.choices()
+ex1)
+import random
+import string
+
+string.ascii_letters
+
+print(random.choices(string.ascii_letters, k = 10)) 결과값 : ['c', 'H', 'k', 'k', 'p', 'C', 'c', 'm', 'H', 'G']
+
+print(''.join(random.choices(string.ascii_letters, k = 10))) 결과값 : 'zsOkSncEKF'
+    
+str_list=[]
+for _ in range(10):
+    str_list.append(''.join(random.choices(string.ascii_letters, k=10)))
+    
+print(str_list) 결과값 : ['zzYUZHmsFF', 'pmmePpLztC', 'fxMpjllVkS', 'FUtKcAZAnv', ...]
+
+ex2)
+print([''.join(random.choices(string.ascii_letters, k=10)) for _ in range(10)])
+결과값 : ['fVpgrnqJUY', 'yWNFLEUEXw', 'nESooGmemo', 'fJFcszXENf', 'SBalDrsrQk', 'FhTEycEAmn', ...]
+
+str_list2 = [''.join(random.choices(string.ascii_letters, k=10)) for _ in range(10)]
+print(str_list2) 결과값 : ['gVvbtIzJZU', 'EVxrXDOqMD', 'QyKfzYKhhk', 'whduTYrEgu', 'jEBvqNZBbV', 'qWxLBIxdAG', ..]
+
+# 임의 숫자 생성 (2) : numpy.random.random(), numpy.random.randint()
+ex)
+import numpy as np
+print(np.random.random(10))
+결과값 : [0.57838733 0.85430859 0.03437406 0.71316458 0.33937457 0.86941941
+ 0.76313708 0.03126443 0.5829083  0.29082355]
+ 
+print(list(np.random.random(10)))
+결과값 : [0.2660265355327718, 0.9682706895564805, 0.7132207710020236, ...]
+
+print(np.random.randint(0,100,10))
+결과값 : [66 74 95 13 68 40 91 59 26 52]
+
+print(list(np.random.randint(0,100,10)))
+결과값 : [87, 74, 44, 63, 78, 59, 53, 25, 68, 80]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
