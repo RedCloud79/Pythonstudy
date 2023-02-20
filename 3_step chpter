@@ -7,7 +7,8 @@ elif condition:
 else:
   @ TODO: write code....
 
-# (2) if in 문
+
+# (2) if _ in 문
 fridge = ['apple', 'mandarine', 'banana', 'pine apple']
 if 'apple' in fridge:
     'eat apple'
@@ -17,10 +18,58 @@ if 'apple' in fridge:
 # while 문
 while conditon:
   @ TODO: wrie code....
-  
+
+
+# 리스트 자료형
+- 자료형의 집합을 표현할 수 있는 자료형
+- 숫자와 문자열만으로 프로그래밍을 하기엔 부족한 점이 많음
+- ([])대괄호로 감싸고 각 요솟값음 쉼표(,)로 구분
+- 리스트 안에 어떠한 자료형도 포함 가능
+
+
+# 리스트 인덱싱 ( 리스트 내부의 리스트가 존재하는경우 )
+a = [1,2,3,['a','b','c']]
+a[-1][0]  결과값 : 'a'
+
+
+#리스트 연산
+[*a]
+[1, 2, 3]
+[*a,*b]
+[1, 2, 3, 4, 5, 6]
+[*a[:2],*b[2:]]
+[1, 2, 6]
+
+
+# 리스트 슬라이싱 ( 부분 리스트를 짤라내는 것 ), (슬라이싱은 자료로 풀린다)
+ex_1)
+a = [1,2,3,4,5]
+b = a[:2] 결과값 : [1, 2]
+c = a[2:] 결과값 : [3, 4, 5]
+
+ex_2)
+a = [1,2,3]
+del a[1]
+a 결과값 : [1, 3]
+
+
+## 리스트 관련함수
+.append() : 리스트에 요소 추가
+.sort() : 리스트에 요소를 순서대로 정렬
+.reverse() : 리스트를 역순으로 뒤집어 줌. 역순으로 정렬하는 것이 아닌 리스트 그대로 뒤집음. '[::-1]' 도 같은 경우
+.index() : 요소를 검색하여 위치 값 반환, 값이 존재하지 않으면, 값 오류 발생
+* random.shuffle(a) = a를 랜덤으로 섞음.
+.insert([위치],끼워 넣을 값) : 리스트에 요소 삽입 * 끼워 넣는것
+.remove() : 리스트의 첫번째 요소 제거
+.pop() : 리스트의 맨 마지막 요소를 돌려주고 해당 요소 삭제
+.count() : 리스트에 포함된 요소의 개수 반환
+.extend({}) : 리스트에 리스트를 더하는 함수 * a += ([4,5])와 동일하다.
+
+
 # for 문
 for item in items:
     @ TODO: wrie code....
+    
 unpacking operator = 풀기 연산자 @ [*range(1,6)] 결과값 : [1,2,3,4,5]
 packing operator = 묶음 연산자 '*' = 곱하기, 거듭제곰, 풀기, 묶기 등에 사용
     
@@ -39,17 +88,17 @@ for i in range(10):
     int_list.append(i) 결과값 : [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
     
 4. 리스트 내포 : 리스트 생성하기 편리
-ex1) 
+ex_1) 
 [i for i in range(10)] 결과값 : [0,1,2,3,4,5,6,7,8,9]
 int_list2 = [i for i in range(10)] 결과값 : [0,1,2,3,4,5,6,7,8,9]
 
-ex2) 
+ex_2) 
 for i in range(5):
     i**2  결과값 : 0,1,4,9,16
 [i**2 for i in range(5)]
 결과값 : [0, 1, 4, 9, 16]
 
-ex3)
+ex_3)
 (i**2+i for i in range(5))
 결과값 : <generator object <genexpr> at 0x00000270ACD1A570>
 [*(i**2+i for i in range(5))]
@@ -58,7 +107,7 @@ list(i**2+i for i in range(5))
 결과값 : [0, 2, 6, 12, 20]
 
 # 임의 숫자 생성 : random.random(), random.randint(a,b)
-ex1)
+ex_1)
 import random
 random.random()
 random.randint(0,100)
@@ -76,13 +125,13 @@ for _ in range(10):
     
 print(int_list_2) 결과값 : [74, 45, 43, 0, 17, 35, 64, 24, 43, 63]
 
-ex2)
+ex_2)
 [random.random() for _ in range(10)] 결과값 : [0.35001574082673703, 0.06293913028242082, ...]
 [random.randint(0,100) for _ in range(10)] 결과값 : [61, 37, 16, 74, 91, 33, 77, 22, 99, 76]
 
 
 # 임의 문자열 생성 : random.choices()
-ex1)
+ex_1)
 import random
 import string
 
@@ -98,7 +147,7 @@ for _ in range(10):
     
 print(str_list) 결과값 : ['zzYUZHmsFF', 'pmmePpLztC', 'fxMpjllVkS', 'FUtKcAZAnv', ...]
 
-ex2)
+ex_2)
 print([''.join(random.choices(string.ascii_letters, k=10)) for _ in range(10)])
 결과값 : ['fVpgrnqJUY', 'yWNFLEUEXw', 'nESooGmemo', 'fJFcszXENf', 'SBalDrsrQk', 'FhTEycEAmn', ...]
 
@@ -106,7 +155,7 @@ str_list2 = [''.join(random.choices(string.ascii_letters, k=10)) for _ in range(
 print(str_list2) 결과값 : ['gVvbtIzJZU', 'EVxrXDOqMD', 'QyKfzYKhhk', 'whduTYrEgu', 'jEBvqNZBbV', 'qWxLBIxdAG', ..]
 
 # 임의 숫자 생성 (2) : numpy.random.random(), numpy.random.randint()
-ex)
+ex_1)
 import numpy as np
 print(np.random.random(10))
 결과값 : [0.57838733 0.85430859 0.03437406 0.71316458 0.33937457 0.86941941
@@ -122,15 +171,71 @@ print(list(np.random.randint(0,100,10)))
 결과값 : [87, 74, 44, 63, 78, 59, 53, 25, 68, 80]
 
 
+## 튜플(Tuple)
+- 값 변경 불가능 '()'로 둘러쌓임, 읽기만 가능 수정할 경우 TypeError 발생
+- (1)과 같은 1개의 항목의 경우 (1,)와 같이 ','를 같이 사용해야 한다.
+- a,b,c = 1,2,3 이 성립됨.
+- a,b=b,a = 교차 변환이 가능
+- a,b,c = func()와 같이 여러 값을 return이 가능
+- generator은 일회용이다.
+
+* 인덱싱
+* 슬라이싱
+* 튜플 더하기
+* 튜플 곱하기
+* 튜플 길이 구하기
 
 
+## 딕셔너리 자료형
+- 대응 관계를 나타내는 자료형
+- 연관배열 또는 해시
+- Key와 value를 한 쌍으로 갖는 자료형
+- 순차적으로 해당 요솟값을 구하지않고, Key를 통해 Value를 바로 얻는 특징
 
+* 형태 = {key1:Value1, Key2:Value2, Key3:Value3, ...}
 
+* 딕셔너리 쌍 추가
+ex_1)
+a = {1:'a'}
+a[2] = 'b'
+a
+{1: 'a', 2: 'b'}
 
+* 딕셔너리 요소 삭제
+ex_1)
+del a[1]
+a
+{2: 'b'}
 
+** 딕셔너리 에서 Key 사용해 Value얻기
+ex_1)
+a
+결과값 : {'name': 'pay', 'phone': '34958393', 'birth': '1234'}
+a['name']
+결과값 : 'pay'
+a['phone']
+결과값 : '34958393'
 
+** Values()
+ex_1)
+a = {"name" : "pay", "phone": "34958393", "birth": "1234"}
+a.values()
+결과값 : dict_values(['pay', '34958393', '1234'])
 
+** items()
+ex_1)
+a = {"name" : "pay", "phone": "34958393", "birth": "1234"}
+a.items()
+결과값 : dict_items([('name', 'pay'), ('phone', '34958393'), ('birth', '1234')])
 
+ex_2)
+fridge = {'apple':2,'banana':5,'orange':10}
+for fruit,howmany in fridge.items():
+    fruit,howmany
+    
+('apple', 2)
+('banana', 5)
+('orange', 10)
 
 
 
