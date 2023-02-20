@@ -1,0 +1,9 @@
+# if 문
+## (1) if-elif-else 문
+if condition:
+  @ TODO: write code....
+elif condition:
+  @ TODO: write code....
+else:
+  @ TODO: write code....
+
