@@ -162,35 +162,92 @@ basket = [['pine apple', 'pine apple'], ['hanrabong', 'hanrabong', 'hanrabong',
 ## 함수
 - 작은 동작을 묶어서 큰 동작으로 만드는 작업 큰 동작은 대표 동작
 - 함수는 잘 정의하면 재사용할 수 있음(재사용성), 함수의 이름을 잘 정하면 가독성을 높일 수 있음(가독성)
+def name(arguments):
+        """description for name"""
+        # TODO: write code ...
+        
+def k (a,b):
+    q = a//b
+    r = a%b
+    return q,r
+a = 19
+b = 5
+q, r = k(a,b)
+
+# 위치 기반 인자, 키워드 기반인자
+>>> def func(a,b):
+    a,b
+    
+>>> func(10,20)
+(10, 20)
+>>> func('hello','world')
+('hello', 'world')
+>>> func(b=100, a=3000)
+(3000, 100)
+ex_1) 커피 자판기
+>>> menu = {
+    'americano': 1500,
+    'caffe latte': 2500,
+    'aspresso': 1500,
+    }
+>>> total_money =  0
+>>> def coffee_machine(money, coffee_in):
+    change, coffee_out = money, None
+    if coffee_in in menu.keys():
+        value = menu[coffee_in]
+        if money>=value:
+            change = money - value
+            coffee_out = coffee_in
+    return change, coffee_out
+
+>>> change, coffee = coffee_machine(5000, 'americano')
+>>> print(change, coffee)
+3500 americano
+
+# '*args'인자 이해하기
+>>> def func(*args):
+    args
+    
+>>> func(1,2,3,4)
+(1, 2, 3, 4)
+>>> l=[5,6,7,8]
+>>> func(*l)
+(5, 6, 7, 8)
+>>> values = 1,2,3,4
+>>> values
+(1, 2, 3, 4)
+>>> *values, = 1,2,3,4
+>>> values
+[1, 2, 3, 4]
+>>> [*values]
+[1, 2, 3, 4]
+>>> 
+
+# '**kwargs'
+>>> def func(**kwargs):
+    kwargs
+    
+>>> func(americano=1500,caffe_latte=2000,espresso=1500)
+{'americano': 1500, 'caffe_latte': 2000, 'espresso': 1500}
+>>> menu = {'americano':1500, 'caffe latte':2000, 'espresso':1500}
+>>> menu
+{'americano': 1500, 'caffe latte': 2000, 'espresso': 1500}
+>>> func(**menu)
+{'americano': 1500, 'caffe latte': 2000, 'espresso': 1500}
 
 
-***정전 날아감 ***( 시간나면 보충 )
+# enumerate(리스트 항목 순서가 필요할 때)
+>>> for i, coffee in enumerate(['americano', 'caffe latte', 'espresso']):
+    i, coffee
+    
+(0, 'americano')
+(1, 'caffe latte')
+(2, 'espresso')
 
-
+# zip (리스트 항목별 묶기)
+**추가 작성 필요**
 
 # lambda, filter, for-in 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
