@@ -1,0 +1,195 @@
+# 튜플, 사전, 집합 소개
+
+# packing operater '*'
+- 변수 대입시 남은거를 리스트로 묶는다. (무조껀 리스트로만 담아진다)
+ex_1)
+d, *e = 5,6,7
+* 결과값
+d = 5
+e = [6, 7]
+d,*e,f = 5,6,7
+* 결과값
+d = 5
+e = [6]
+f = 7
+d,*e,f = 5,6,7,8
+* 결과값
+d = 5
+e = [6, 7]
+f = 8
+d,*e,f = 5,6
+* 결과값
+d = 5
+e = []
+f = 6
+
+* 한 개인 경우
+*e, = 5,
+e = [5]
+
+
+* 함수의 경우
+- 변경이 없기 때문에 튜플로 묶임
+ex_1)
+def f(a,b,*c):
+    a
+    b
+    c
+    
+f(1,2,3,4,5,6) # a,b,*c = 1,2,3,4,5,6
+* 결과값
+1
+2
+(3, 4, 5, 6)
+
+ex_2)
+def g(*arg):
+    arg
+    
+g(1,2,3,4,5,6,7) = (1, 2, 3, 4, 5, 6, 7)
+type(g) = <class 'function'>
+*args,=1,2,3,4,5,6,7
+args = [1, 2, 3, 4, 5, 6, 7]
+type(args) = <class 'list'>
+
+
+## dict : key로 값 찾기
+- dict 는 key와 값이 하나인 구성 '{}'
+
+ex_1)
+shopping = {}
+shopping['apple']=3
+shopping['pear']=2
+shopping['hanrabong']=5
+shopping['pine apple']=2
+shopping
+결과값 : {'apple': 3, 'pear': 2, 'hanrabong': 5, 'pine apple': 2}
+
+* 접근방법
+shopping
+결과값 : {'apple': 3, 'pear': 2, 'hanrabong': 5, 'pine apple': 2}
+shopping['apple']
+결과값 : 3
+shopping['hanrabong']
+결과값 : 5
+
+* 주요 함수
+- 풀어 내는 방법 : List(), unpacking operator '*'
+shopping.keys()
+결과값 : dict_keys(['apple', 'pear', 'hanrabong', 'pine apple'])
+shopping.values()
+결과값 : dict_values([3, 2, 5, 2])
+shopping.items()
+결과값 : dict_items([('apple', 3), ('pear', 2), ('hanrabong', 5), ('pine apple', 2)])
+
+[*shopping.keys()]
+결과값 : ['apple', 'pear', 'hanrabong', 'pine apple']
+[*shopping.values()]
+결과값 : [3, 2, 5, 2]
+[*shopping.items()]
+결과값 : [('apple', 3), ('pear', 2), ('hanrabong', 5), ('pine apple', 2)]
+
+* dict와 for-in문
+for key in shopping.keys():
+    key
+* 결과값    
+'apple'
+'pear'
+'hanrabong'
+'pine apple'
+for item in shopping.items():
+    item
+* 결과값    
+('apple', 3)
+('pear', 2)
+('hanrabong', 5)
+('pine apple', 2)
+
+
+ex_1) 장보기 1
+shopping = {'apple': 3, 'pear': 2, 'hanrabong': 5, 'pine apple': 2}
+basket = []
+for fruit, how_many in shopping.items():
+    fruit, how_many
+    plastic_bag=[]
+    for _ in range(how_many):
+        plastic_bag.append(fruit)
+    basket.append(plastic_bag)
+    
+('apple', 3)
+('pear', 2)
+('hanrabong', 5)
+('pine apple', 2)
+basket
+결과값 : [['apple', 'apple', 'apple'], ['pear', 'pear'], ['hanrabong', 'hanrabong', 'hanrabong',
+'hanrabong', 'hanrabong'], ['pine apple', 'pine apple']]
+
+ex_2) 장보기 2
+shopping = {'apple': 3, 'pear': 2, 'hanrabong': 5, 'pine apple': 2}
+for fruit, how_many in shopping.items():
+    fruit, how_many
+    basket.append([fruit]*how_many)
+    
+('apple', 3)
+('pear', 2)
+('hanrabong', 5)
+('pine apple', 2)
+basket = [['apple', 'apple', 'apple'], ['pear', 'pear'], ['hanrabong', 'hanrabong',
+'hanrabong', 'hanrabong', 'hanrabong'], ['pine apple', 'pine apple']]
+
+ex_3) 장보기 3
+shopping = {'apple': 3, 'pear': 2, 'hanrabong': 5, 'pine apple': 2}
+basket = [[fruit]*how_many for fruit,how_many in shopping.items()]
+basket = [['apple', 'apple', 'apple'], ['pear', 'pear'], ['hanrabong', 'hanrabong',
+'hanrabong', 'hanrabong', 'hanrabong'], ['pine apple', 'pine apple']]
+
+ex_4) 장보기 4
+shopping = {'apple': 3, 'pear': 2, 'hanrabong': 5, 'pine apple': 2}
+while shopping:
+    fruit,how_many = shopping.popitem()
+    fruit,how_many
+    basket.append([fruit]*how_many)
+    
+('pine apple', 2)
+('hanrabong', 5)
+('pear', 2)
+('apple', 3)
+shopping = {}
+basket = [['pine apple', 'pine apple'], ['hanrabong', 'hanrabong', 'hanrabong',
+'hanrabong', 'hanrabong'], ['pear', 'pear'], ['apple', 'apple', 'apple']]
+
+
+## 함수
+- 작은 동작을 묶어서 큰 동작으로 만드는 작업 큰 동작은 대표 동작
+- 함수는 잘 정의하면 재사용할 수 있음(재사용성), 함수의 이름을 잘 정하면 가독성을 높일 수 있음(가독성)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
