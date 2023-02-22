@@ -164,7 +164,11 @@ basket = [['pine apple', 'pine apple'], ['hanrabong', 'hanrabong', 'hanrabong',
 - 함수는 잘 정의하면 재사용할 수 있음(재사용성), 함수의 이름을 잘 정하면 가독성을 높일 수 있음(가독성)
 
 
+***정전 날아감 ***( 시간나면 보충 )
 
+
+
+# lambda, filter, for-in 
 
 
 
