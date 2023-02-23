@@ -1,0 +1,84 @@
+## 무명 함수 : lambda
+- 한 줄로 이루어진 함수들을 사용
+- def를 대신하여 사용한다.
+
+ex_1)
+f = lambda a,b : a*b
+f(10,20)
+결과값 : 200
+f2 = lambda a : a**2
+f2(3)
+결과값 : 9
+f3 = lambda a : a>2
+f3(2)
+결과값 : False
+
+# lambda, map, for-in 문의 활용
+- 변수 = map(함수, [리스트,튜블 등..]) 으로 구성
+
+ex_1)
+f = lambda a,b : a*b
+f(10,20)
+결과값 : 200
+m=map(lambda a : a**2, [1,2,3,4])
+m
+결과값 : <map object at 0x000001D23B340DC0>
+m =[*m]
+m
+결과값 : [1, 4, 9, 16]
+
+ex_2)
+>>> f=lambda a:a**2
+>>> l=[1,2,3,4]
+>>> for m in map(f,l):
+    m
+* 결과값
+1
+4
+9
+16
+
+# lambda, filter, for-in 문의 활용
+
+ex_1)
+f = filter(lambda a: a>2, [1,2,3,4])
+f
+결과값 : <filter object at 0x000001D23B343550>
+f=[*f]
+f
+결과값 : [3, 4]
+f=lambda a:a>2
+l=[1,2,3,4]
+for f in filter(f,l):
+    f
+* 결과값
+3
+4
+
+
+## class
+- 변수 -> 클래스 -> 멤버변수 -> 속성(attributes)
+  함수              멤버함수 -> 방법(methods)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
