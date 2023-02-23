@@ -168,11 +168,12 @@ print(change, coffee)
 ############클래스 예시###################
 
 ex_1) 사용자와 금액을 받고 랜덤으로 계좌생성 *.zfill()은 앞에 0이 생성되어 0이 안보이는 걸막음
+계좌의 갯수와 생성금액, 빼내는금액 기능 
 
 import random
 
-
 class Account:
+    account = 0
     def __init__(self, name, money):
         self.bank = "SC 은행"
         self.name = name
@@ -186,9 +187,26 @@ class Account:
         num3 = str(num3).zfill(6)
         self.account_number = num1 + "-" + num2 + "-" + num3
         
-user_0 = Account("홍길동", 1.320)
+        Account.account += 1
+    def get_account_num(cls):
+        print(cls.account)
+        
+    def deposit(self, cratemoney):
+        if cratemoney >= 1:
+            self.money += cratemoney
+            
+    def withdraw(self, cratemoney):
+        if self.money > cratemoney:
+            self.money -= cratemoney
+        
+user_0 = Account("홍길동", 320)
+user_1 = Account("홍기동", 320)
+user_0.deposit(200)
+user_0.withdraw(500)
 print("은행이름: {}".format(user_0.bank))
 print("계좌번호: {}".format(user_0.account_number))
+user_0.get_account_num()
+print(user_0.money)
 
 
 
