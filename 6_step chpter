@@ -165,5 +165,67 @@ print(change, coffee)
 결과값 : 3500 espresso
 
 
+############클래스 예시###################
+
+ex_1) 사용자와 금액을 받고 랜덤으로 계좌생성 *.zfill()은 앞에 0이 생성되어 0이 안보이는 걸막음
+
+import random
 
 
+class Account:
+    def __init__(self, name, money):
+        self.bank = "SC 은행"
+        self.name = name
+        self.money = money
+        num1 = random.randint(0, 999)
+        num2 = random.randint(0, 99)
+        num3 = random.randint(0, 999999)
+        
+        num1 = str(num1).zfill(3)
+        num2 = str(num2).zfill(2)
+        num3 = str(num3).zfill(6)
+        self.account_number = num1 + "-" + num2 + "-" + num3
+        
+user_0 = Account("홍길동", 1.320)
+print("은행이름: {}".format(user_0.bank))
+print("계좌번호: {}".format(user_0.account_number))
+
+
+
+ex_2) 회사의 이름,code, PER, PBR, 배당수익률의 값을 받아 code와PER의 값만 출력
+
+class Stock:
+    def __init__(self, name, code, PER, PBR, 배당수익률):
+        self.name = name
+        self.code = code
+        self.PER = PER
+        self.PBR = PBR
+        self.배당수익률 = 배당수익률
+    def set_name(self, name):
+        self.name = name
+    def set_code(self, code):
+        self.code = code
+    def get_name(self):
+        return self.name
+    def get_code(self):
+        return self.code
+    def set_per(self, PER):
+        self.PER = PER
+    def set_pbr(self, PBR):
+        self.PBR = PBR
+    def set_배당수익률(self, 배당수익률):
+        self.배당수익률 = 배당수익률
+    
+_0 = Stock("삼성전자", "005940", 15.79, 1.33, 2.83)
+_1 = Stock("현대차", "005380", 9.70, 0.35, 4.27)
+_2 = Stock("LG전자", "066570", 317.34, 0.69, 1.37)
+
+i = []
+i.append(_0)
+i.append(_1)
+i.append(_2)
+for a in i:
+    
+    print(a.code,a.PER)
+    
+    
