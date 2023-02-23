@@ -162,10 +162,12 @@ basket = [['pine apple', 'pine apple'], ['hanrabong', 'hanrabong', 'hanrabong',
 ## 함수
 - 작은 동작을 묶어서 큰 동작으로 만드는 작업 큰 동작은 대표 동작
 - 함수는 잘 정의하면 재사용할 수 있음(재사용성), 함수의 이름을 잘 정하면 가독성을 높일 수 있음(가독성)
+* 기본 형태
 def name(arguments):
         """description for name"""
         # TODO: write code ...
         
+ex_1)
 def k (a,b):
     q = a//b
     r = a%b
@@ -175,23 +177,25 @@ b = 5
 q, r = k(a,b)
 
 # 위치 기반 인자, 키워드 기반인자
->>> def func(a,b):
+ex_1)
+def func(a,b):
     a,b
     
->>> func(10,20)
-(10, 20)
->>> func('hello','world')
-('hello', 'world')
->>> func(b=100, a=3000)
-(3000, 100)
+func(10,20)
+결과값 : (10, 20)
+func('hello','world')
+결과값 : ('hello', 'world')
+func(b=100, a=3000)
+결과값 : (3000, 100)
+
 ex_1) 커피 자판기
->>> menu = {
+menu = {
     'americano': 1500,
     'caffe latte': 2500,
     'aspresso': 1500,
     }
->>> total_money =  0
->>> def coffee_machine(money, coffee_in):
+total_money =  0
+def coffee_machine(money, coffee_in):
     change, coffee_out = money, None
     if coffee_in in menu.keys():
         value = menu[coffee_in]
@@ -200,52 +204,86 @@ ex_1) 커피 자판기
             coffee_out = coffee_in
     return change, coffee_out
 
->>> change, coffee = coffee_machine(5000, 'americano')
->>> print(change, coffee)
-3500 americano
+change, coffee = coffee_machine(5000, 'americano')
+print(change, coffee)
+결과값 : 3500 americano
 
 # '*args'인자 이해하기
->>> def func(*args):
+ex_1)
+def func(*args):
     args
     
->>> func(1,2,3,4)
-(1, 2, 3, 4)
->>> l=[5,6,7,8]
->>> func(*l)
-(5, 6, 7, 8)
->>> values = 1,2,3,4
->>> values
-(1, 2, 3, 4)
->>> *values, = 1,2,3,4
->>> values
-[1, 2, 3, 4]
->>> [*values]
-[1, 2, 3, 4]
->>> 
+func(1,2,3,4)
+결과값 : (1, 2, 3, 4)
+l=[5,6,7,8]
+func(*l)
+결과값 : (5, 6, 7, 8)
+values = 1,2,3,4
+values
+결과값 : (1, 2, 3, 4)
+*values, = 1,2,3,4
+values
+결과값 : [1, 2, 3, 4]
+[*values]
+결과값 : [1, 2, 3, 4]
 
 # '**kwargs'
->>> def func(**kwargs):
+ex_1)
+def func(**kwargs):
     kwargs
     
->>> func(americano=1500,caffe_latte=2000,espresso=1500)
-{'americano': 1500, 'caffe_latte': 2000, 'espresso': 1500}
->>> menu = {'americano':1500, 'caffe latte':2000, 'espresso':1500}
->>> menu
-{'americano': 1500, 'caffe latte': 2000, 'espresso': 1500}
->>> func(**menu)
-{'americano': 1500, 'caffe latte': 2000, 'espresso': 1500}
+func(americano=1500,caffe_latte=2000,espresso=1500)
+결과값 : {'americano': 1500, 'caffe_latte': 2000, 'espresso': 1500}
+menu = {'americano':1500, 'caffe latte':2000, 'espresso':1500}
+menu
+결과값 : {'americano': 1500, 'caffe latte': 2000, 'espresso': 1500}
+func(**menu)
+결과값 : {'americano': 1500, 'caffe latte': 2000, 'espresso': 1500}
 
 
 # enumerate(리스트 항목 순서가 필요할 때)
->>> for i, coffee in enumerate(['americano', 'caffe latte', 'espresso']):
+for i, coffee in enumerate(['americano', 'caffe latte', 'espresso']):
     i, coffee
-    
+* 결과값    
 (0, 'americano')
 (1, 'caffe latte')
 (2, 'espresso')
 
-# zip (리스트 항목별 묶기)
-**추가 작성 필요**
+# zip (리스트 항목별 묶기) * 휘발성 데이터 (일회용)
+ex_1) * zip으로 리스트 묶기
+l1 = ['americano', 'caffe late', 'espresso','green tea']
+l2 = [1500, 2500, 1600, 2200]
+z = zip(l1, l2)
+for coffee, price in z:
+    coffee, price
+* 결과값    
+('americano', 1500)
+('caffe late', 2500)
+('espresso', 1600)
+('green tea', 2200)
+
+
+ex_2) * zip으로 리스트 풀기
+l1 = ['americano', 'caffe late', 'espresso','green tea']
+l2 = [1500, 2500, 1600, 2200]
+z = zip(l1, l2)
+l1_l2 = []
+for coffee, price in z:
+    l1_l2.append((coffee, price))
+    
+l1_l2
+결과값 : [('americano', 1500), ('caffe late', 2500), ('espresso', 1600), ('green tea', 2200)]
+z2 = zip(*l1_l2)
+z2
+결과값 : <zip object at 0x000001326A327F40>
+ze=[*z2]
+ze
+결과값 : [('americano', 'caffe late', 'espresso', 'green tea'), (1500, 2500, 1600, 2200)]
+l1,l2=ze
+l1
+결과값 : ('americano', 'caffe late', 'espresso', 'green tea')
+l2
+결과값 : (1500, 2500, 1600, 2200)
 
 # lambda, filter, for-in 
 
