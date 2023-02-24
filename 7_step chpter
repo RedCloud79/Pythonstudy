@@ -51,23 +51,74 @@ id(a.first)
 id(b.first)
 결과값 : 2901290254640
 
+ex_2) 더하기 기능만들기( 빼기, 곱, 나누기)
+class FourCal:
+    def setdata(self, first, second):
+        self.first = first
+        self.second = second
+    def add(self):
+        result = self.first + self.second
+        return result
+    def mul(self):
+        result = self.first * self.second
+        return result
+    def sub(self):
+        result = self.first - self.second
+        return result
+    def div(self):
+        result = self.first / self.second
+        return result
+    
+a = FourCal()
+a.setdata(4,2)
+a.mul()
+결과값 : 8
+a.sub()
+결과값 : 2
+a.div()
+결과값 : 2.0
 
 
+# 생성자
+- 객체가 생성될 때 자도으로 호출되는 메서드
+- 메서드 이름으로 __init__사용
+- 객체에 초깃값을 설정해야 할 필요가 있을 대 생성자를 구현하는 것이 안전한 방법
+ex_1)
+class FourCal:
+    def __init__(self, first, second):
+        self.first = first
+        self.second = second
+        
+- AttributeError 오류 = FourCal클래스의 객체가 setdata를 거치지 않고 add를 수행할경우 발생
 
+# 클래스 상속 ( Inheritance )
+- '물려받는다'라는 뜻, 어떤 클래스를 만들 때 다른 클래스의 기능을 물려받을 수 있게 만드는 것
+* 양식 == class 클래스 이름 ( 상속할 클래스 이름 )
 
+# 클래스 변수
+- 다른 객체들에 영향받지 않고 독립적으로 값을 유지하는 객체변수와는 다른 클래스 변수
+- 클래스 변수는 클래스 안에 변수르르 선언하여 생성
+ex_1)
+class Family:
+    lstname = "김"
+    
+print(Family.lstname)
+결과값 : 김
 
+* 활용
+- 클래스로 만든 객체를 통해서도 클래스 변수 사용 가능
+a = Family()
+b = Family()
+print(a.lstname)
+결과값 : 김
+print(b.lstname)
+결과값 : 김
 
-
-
-
-
-
-
-
-
-
-
-
-
+- 클래스의 클래스변수를 변경하려면?
+Family.lstname = "박"
+print(a.lstname)
+결과값 : 박
+print(b.lstname)
+결과값 : 박
 
 
