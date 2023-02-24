@@ -17,19 +17,19 @@ class Account:
         num2 = random.randint(0, 99)
         num3 = random.randint(0, 999999)
         
-        num1 = str(num1).zfill(3)
+        num1 = str(num1).zfill(3) #.zfill() '0'의 출력을 시켜준다
         num2 = str(num2).zfill(2)
         num3 = str(num3).zfill(6)
         self.number = num1 + "-" + num2 + "-" + num3
         
-        Account.number_count += 1 # 개설된 계좌의 
+        Account.number_count += 1 # 개설된 계좌의 수량
         
         
         
     def deposit(self, add_mony): #입급 , 5번 입금시 0.1퍼센트의 이자율
-        if add_mony >= 1:
+        if add_mony >= 1: # 1보다 넣는 금액이 큰경우
             self.st_mony += add_mony
-            self.deposit_log.append(add_mony)
+            self.deposit_log.append(add_mony) # 입금내역 리스트의 추가
             
             self.add_count += 1
             if self.add_count % 5 == 0: # 이자
@@ -38,7 +38,7 @@ class Account:
     def withdraw(self, add_mony): # 출금
         if self.st_mony >= add_mony:
             self.st_mony -= add_mony
-            self.withdraw_log.append(add_mony)
+            self.withdraw_log.append(add_mony)  # 출금내역 리스트의 추가
         else:
             print("잔액이 부족합니다")
         
@@ -58,22 +58,25 @@ class Account:
             print(add_mony)
 
 data = []
+
+# 3개의 값을 준다
 a = Account('홍길동',1000000)
 b = Account('길동마',2000000)
 c = Account('홍길디',30000)
+
 data.append(a)
 data.append(b)
 data.append(c)
+
 a.deposit(100000)
 a.deposit(10000)
 a.deposit(10000)
 a.deposit_history()
-
 a.withdraw(5000)
 a.withdraw(5000)
 a.withdraw_history()
 
-for n in data:
+for n in data: # 1000000보다 큰경우 정보 값을 
     if n.st_mony >= 1000000:
         n.display_info()
 
