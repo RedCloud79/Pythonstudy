@@ -1,0 +1,78 @@
+import random
+
+class Account:
+    number_count = 0
+    
+    def __init__(self, name, st_mony):
+        self.add_count = 0
+        self.deposit_log = []
+        self.withdraw_log = []
+        
+        self.bank = "SC 은행"
+        self.name = name
+        self.st_mony = st_mony
+        
+        # 랜덤한 계좌 생성
+        num1 = random.randint(0, 999)
+        num2 = random.randint(0, 99)
+        num3 = random.randint(0, 999999)
+        
+        num1 = str(num1).zfill(3)
+        num2 = str(num2).zfill(2)
+        num3 = str(num3).zfill(6)
+        self.number = num1 + "-" + num2 + "-" + num3
+        
+        Account.number_count += 1 # 개설된 계좌의 
+        
+        
+        
+    def deposit(self, add_mony): #입급 , 5번 입금시 0.1퍼센트의 이자율
+        if add_mony >= 1:
+            self.st_mony += add_mony
+            self.deposit_log.append(add_mony)
+            
+            self.add_count += 1
+            if self.add_count % 5 == 0: # 이자
+                self.st_mony = (self.st_mony*1.01)
+        
+    def withdraw(self, add_mony): # 출금
+        if self.st_mony >= add_mony:
+            self.st_mony -= add_mony
+            self.withdraw_log.append(add_mony)
+        else:
+            print("잔액이 부족합니다")
+        
+    def display_info(self): # 개인정보 출력
+        print(f'은행이름: {self.bank}')
+        print(f'예금주: {self.name}')
+        print(f'계좌번호: {self.number}')
+        print(f'잔고: {self.st_mony:,}')
+        
+    def deposit_history(self): # 입금내역
+        for add_mony in self.deposit_log:
+            print(add_mony)
+    
+    
+    def withdraw_history(self): # 출금내역
+        for add_mony in self.withdraw_log:
+            print(add_mony)
+
+data = []
+a = Account('홍길동',1000000)
+b = Account('길동마',2000000)
+c = Account('홍길디',30000)
+data.append(a)
+data.append(b)
+data.append(c)
+a.deposit(100000)
+a.deposit(10000)
+a.deposit(10000)
+a.deposit_history()
+
+a.withdraw(5000)
+a.withdraw(5000)
+a.withdraw_history()
+
+for n in data:
+    if n.st_mony >= 1000000:
+        n.display_info()
