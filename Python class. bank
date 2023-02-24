@@ -76,3 +76,24 @@ a.withdraw_history()
 for n in data:
     if n.st_mony >= 1000000:
         n.display_info()
+
+
+*******************************************************************************
+랜덤한 숫자 뽑아내는 방법
+* 1번째 방법
+first = ''.join(random.choices(string.digits,k=3))
+second = ''.join(random.choices(string.digits,k=2))
+last = ''.join(random.choices(string.digits,k=6))
+acc_num=first+'-'+second+'-'+last
+acc_num
+결과값 : '961-31-243785'
+
+
+* 2번째 방법
+first = random.randint(0,1000)
+second = random.randint(0,100)
+last = random.randint(0,1000000)
+acc_num = '%03d-%02d-%06d'%(first,second,last)
+acc_num
+결과값 : '465-50-453761'
+
